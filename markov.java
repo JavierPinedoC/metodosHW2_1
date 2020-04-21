@@ -65,7 +65,7 @@ public class markov {
     }
 
     public static void vector(double[][] p){
-        System.out.print("Vector de punto fijo: (");
+        System.out.print("\nVector de punto fijo: (");
         double x = (-p[1][0]+p[1][1]-1)/(p[0][0]-p[1][0]-p[0][1]+p[1][1]-2);
         System.out.println(convert(x) +", " + convert(1-x) + ")");
     }
