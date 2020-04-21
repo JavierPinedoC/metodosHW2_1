@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class markov {
 
@@ -42,7 +42,7 @@ public class markov {
             double aux[][] = new double[estados][estados];
 
             aux = decimal;
-            for (int control = 0; control < iteraciones; control++) {
+            for (int control = 0; control < iteraciones-1; control++) {
                 double[][] c = new double[estados][estados];
                 
                 if (aux[0].length == decimal.length) {
