@@ -1,10 +1,9 @@
 import java.util.Scanner;
 
 public class markov {
-
+    static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner sc;
-        sc = new Scanner(System.in);
+        
         int estados = sc.nextInt();
 
         double decimal[][] = new double[estados][estados];
@@ -14,14 +13,13 @@ public class markov {
         matrix(decimal, numerador, denominador);
 
         int iteraciones = sc.nextInt();
-
-        pasos(iteraciones, decimal, numerador, denominador, estados);
+        if(iteraciones>0)
+            pasos(iteraciones, decimal, estados);
         vector(decimal);
+
     }
 
     public static void matrix(double[][] decimal, double[][] numerador, double[][] denominador) {
-        Scanner sc;
-        sc = new Scanner(System.in);
         for (int i = 0; i < numerador.length; i++) {
             for (int j = 0; j < numerador.length; j++) {
                 numerador[i][j] = sc.nextInt();
@@ -31,34 +29,28 @@ public class markov {
         }
     }
 
-    public static void pasos(int iteraciones, double[][] decimal, double[][] numerador, double[][] denominador, int estados) {
-        if(iteraciones==1){
-            System.out.println("P1");
+    public static void pasos(int iteraciones, double[][] decimal, int estados) {
+        System.out.println("P1");
             ImprimirM(decimal);
-        }
-        else{
-            System.out.println("P1");
-                ImprimirM(decimal);
-            double aux[][] = new double[estados][estados];
+        double aux[][] = new double[estados][estados];
 
-            aux = decimal;
-            for (int control = 0; control < iteraciones-1; control++) {
-                double[][] c = new double[estados][estados];
-                
-                if (aux[0].length == decimal.length) {
-                    for (int i = 0; i < aux.length; i++) {
-                        for (int j = 0; j < decimal[0].length; j++) {
-                            for (int k = 0; k < aux[0].length; k++) {
-                                c[i][j] += aux[i][k] * decimal[k][j];
-                            }
+        aux = decimal;
+        for (int control = 0; control < iteraciones-1; control++) {
+            double[][] c = new double[estados][estados];
+            
+            if (aux[0].length == decimal.length) {
+                for (int i = 0; i < aux.length; i++) {
+                    for (int j = 0; j < decimal[0].length; j++) {
+                        for (int k = 0; k < aux[0].length; k++) {
+                            c[i][j] += aux[i][k] * decimal[k][j];
                         }
                     }
                 }
-                aux = c;
-                
-                System.out.println("P" + (control+2));
-                ImprimirM(aux);
             }
+            aux = c;
+            
+            System.out.println("P" + (control+2));
+            ImprimirM(aux);
         }
     }
 
