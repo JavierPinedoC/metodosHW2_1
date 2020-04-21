@@ -16,6 +16,7 @@ public class markov {
         int iteraciones = sc.nextInt();
 
         pasos(iteraciones, decimal, numerador, denominador, estados);
+        vector(decimal);
     }
 
     public static void matrix(double[][] decimal, double[][] numerador, double[][] denominador) {
@@ -71,10 +72,12 @@ public class markov {
         }
     }
 
-    public static void vector(double[][] decimal){
-
+    public static void vector(double[][] p){
+        System.out.print("Vector de punto fijo: (");
+        double x = (-p[1][0]+p[1][1]-1)/(p[0][0]-p[1][0]-p[0][1]+p[1][1]-2);
+        System.out.println(convert(x) +", " + convert(1-x) + ")");
     }
-    
+
     public static String convert(double n) {
         double tolerance = 1.0E-6;
         double h1 = 1;
